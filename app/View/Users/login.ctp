@@ -1,18 +1,18 @@
 <div class="users form">
+    <?php echo $this->Session->flash('auth'); ?>
     <?php echo $this->Form->create('User'); ?>
     <fieldset>
-        <legend><?php echo __('Add User'); ?></legend>
+        <legend><?php echo __('Please enter your mailaddress and password.'); ?></legend>
         <?php
         echo $this->Form->input('email');
         echo $this->Form->input('password');
-        echo $this->Form->input('Principle.article');
         ?>
     </fieldset>
-    <?php echo $this->Form->end(__('Submit')); ?>
+<?php echo $this->Form->end(__('Login')); ?>
 </div>
 <div class="actions">
     <h3><?php echo __('Actions'); ?></h3>
     <ul>
-        <li><?php echo $this->Html->link(__('List Principles'), array('controller' => 'principles', 'action' => 'index')); ?> </li>
+        <li><?php echo $this->Html->link(__('New User'), array('controller' => 'users', 'action' => 'add')); ?> </li>
     </ul>
 </div>

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Application level Controller
  *
@@ -18,7 +19,6 @@
  * @since         CakePHP(tm) v 0.2.9
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('Controller', 'Controller');
 
 /**
@@ -31,4 +31,18 @@ App::uses('Controller', 'Controller');
  * @link		http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
+
+    public $components = array(
+        'Session',
+        'Flash',
+        'Auth' => array(
+            'loginAction' => array('controller' => 'users', 'action' => 'login'),
+            'loginRedirect' => array('controller' => 'principles', 'action' => 'index'),
+            'logoutRedirect' => array('controller' => 'users', 'action' => 'login'),
+            'authenticate' => array('Form' => array('userModel' => 'User', 'fields' => Array('username' => 'email'), 'passwordHasher' => array(
+                        'className' => 'Plain'
+                    )))
+        )
+    );
+
 }

@@ -15,7 +15,8 @@ class AppSchema extends CakeSchema {
 		'created' => array('type' => 'datetime', 'null' => true, 'default' => null),
 		'modified' => array('type' => 'datetime', 'null' => true, 'default' => null),
 		'indexes' => array(
-			'PRIMARY' => array('unique' => true, 'column' => 'id')
+			'PRIMARY' => array('unique' => true, 'column' => 'id'),
+			'fki_fkey_principle_user' => array('unique' => false, 'column' => 'user_id')
 		),
 		'tableParameters' => array()
 	);
@@ -27,7 +28,8 @@ class AppSchema extends CakeSchema {
 		'created' => array('type' => 'datetime', 'null' => true, 'default' => null),
 		'modified' => array('type' => 'datetime', 'null' => true, 'default' => null),
 		'indexes' => array(
-			'PRIMARY' => array('unique' => true, 'column' => 'id')
+			'PRIMARY' => array('unique' => true, 'column' => 'id'),
+			'unique_users_email' => array('unique' => true, 'column' => 'email')
 		),
 		'tableParameters' => array()
 	);
