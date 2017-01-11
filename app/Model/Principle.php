@@ -16,14 +16,10 @@ class Principle extends AppModel {
      */
     public $validate = array(
         'id' => array(
-            'notBlank' => array(
-                'rule' => array('notBlank'),
-                'message' => '入力してください。',
-            //'message' => 'Your custom message here',
-            //'allowEmpty' => false,
-            //'required' => false,
-            //'last' => false, // Stop validation after this rule
-            //'on' => 'create', // Limit validation to 'create' or 'update' operations
+            'naturalNumber' => array(
+                'rule' => 'naturalNumber',
+                'message' => '数値で入力してください。',
+                'allowEmpty' => false
             ),
             'length' => array(
                 'rule' => array('maxLength', 64),

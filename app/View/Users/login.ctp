@@ -5,10 +5,10 @@
         <legend><?php echo __('Please enter your mailaddress and password.'); ?></legend>
         <?php
         echo $this->Form->input('email');
-        echo $this->Form->input('password');
+        echo $this->Form->input('password', array('autocomplete' => 'off'));
         ?>
     </fieldset>
-<?php echo $this->Form->end(__('Login')); ?>
+    <?php echo $this->Form->end(__('Login')); ?>
 </div>
 <div class="actions">
     <h3><?php echo __('Actions'); ?></h3>

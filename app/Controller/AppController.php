@@ -33,8 +33,10 @@ App::uses('Controller', 'Controller');
 class AppController extends Controller {
 
     public $components = array(
-        'Session',
+//        'Session',
+//        'Security' => array('validatePost' => false, 'csrfCheck' => false),
         'Flash',
+        'Paginator',
         'Auth' => array(
             'loginAction' => array('controller' => 'users', 'action' => 'login'),
             'loginRedirect' => array('controller' => 'principles', 'action' => 'index'),

@@ -4,7 +4,7 @@
         <legend><?php echo __('Add User'); ?></legend>
         <?php
         echo $this->Form->input('email');
-        echo $this->Form->input('password');
+        echo $this->Form->input('password', array('autocomplete' => 'off'));
         echo $this->Form->input('Principle.article');
         ?>
     </fieldset>

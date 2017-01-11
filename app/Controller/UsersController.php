@@ -10,13 +10,6 @@ App::uses('AppController', 'Controller');
  */
 class UsersController extends AppController {
 
-    /**
-     * Components
-     *
-     * @var array
-     */
-    public $components = array('Paginator');
-
     public function beforeFilter() {
         parent::beforeFilter();
         $this->Auth->allow('login', 'add');
@@ -61,14 +54,18 @@ class UsersController extends AppController {
      * @return void
      */
     public function edit($id = null) {
-        if (!$this->User->exists($id)) {
+        if (!ctype_digit($id) || !$this->User->exists($id)) {
             throw new NotFoundException(__('Invalid user'));
         }
         if ($this->request->is(array('post', 'put'))) {
-            debug($this->request->data);
+            $this->request->data['User']['id'] = $id;
+            $options = array('conditions' => array('User.' . $this->User->primaryKey => $id));
+            $beforeEdit = $this->User->find('first', $options);
+            $this->request->data['Principle']['id'] = $beforeEdit['Principle']['id'];
+
             if ($this->User->saveAll($this->request->data)) {
                 $this->Flash->success(__('The user has been saved.'));
-                return $this->redirect(array('controller' => 'principles','action' => 'index'));
+                return $this->redirect(array('controller' => 'principles', 'action' => 'index'));
             } else {
                 $this->Flash->error(__('The user could not be saved. Please, try again.'));
             }

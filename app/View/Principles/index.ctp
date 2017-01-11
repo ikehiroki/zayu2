@@ -1,5 +1,5 @@
 <div class="principles index">
-    <h2><?php echo $user['User']['email']; ?> さんは「<?php echo $user['Principle']['article']; ?>」</h2>
+    <h2><?php echo h($user['User']['email']); ?> さんは「<?php echo h($user['Principle']['article']); ?>」</h2>
     <h3><?php echo __('article'); ?></h3>
     <table cellpadding="0" cellspacing="0">
         <thead>
@@ -12,9 +12,9 @@
         <tbody>
             <?php foreach ($principles as $principle): ?>
                 <tr>
-                    <td><?php echo h($principle['Principle']['article']); ?>&nbsp;</td>
-                    <td><?php echo h($principle['User']['email']); ?>&nbsp;</td>
-                    <td><?php echo h($principle['Principle']['modified']); ?>&nbsp;</td>
+                    <td><?php echo $principle['Principle']['article']; ?>&nbsp;</td>
+                    <td><?php echo $principle['User']['email']; ?>&nbsp;</td>
+                    <td><?php echo $principle['Principle']['modified']; ?>&nbsp;</td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
