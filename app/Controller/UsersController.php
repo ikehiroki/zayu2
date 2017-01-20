@@ -39,7 +39,7 @@ class UsersController extends AppController {
             $this->User->create();
             if ($this->User->saveAssociated($this->request->data, array('deep' => true))) {
                 $this->Flash->success(__('The user has been saved.'));
-                return $this->redirect(array('action' => 'login'));
+                return $this->redirect(array('controller' => 'principles', 'action' => 'index'));
             } else {
                 $this->Flash->error(__('The user could not be saved. Please, try again.'));
             }
